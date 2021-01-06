@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\thece\proyectos-react-spring\Spring-React-1\.metadata\.plugins\org.eclipse.jdt.core
