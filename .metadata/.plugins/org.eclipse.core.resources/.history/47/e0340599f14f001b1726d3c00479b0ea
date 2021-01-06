@@ -22,20 +22,14 @@ public class EmpleadoController {
 	private EmpleadoRepository empleadoRepository;
 	
 	//listar todos los empleados
-	/*http://localhost:8080/api/v1/empleados*/
+	
 	@GetMapping("/empleados")
 	public List<Empleado> listarEmpleados(){
 		return empleadoRepository.findAll();
 	}
 	
 	//crear empleado rest api
-	/*http://localhost:8080/api/v1/empleados*/
-	/*{
-    "nombre":"***",
-    "apellido":"***",
-    "email":"****@correo.com"
-    }*/
-	@PostMapping("/crear-empleados")
+	@PostMapping("/empleados")
 	public Empleado crearEmpleado(@RequestBody Empleado empleado) {
 		return empleadoRepository.save(empleado);
 	} 

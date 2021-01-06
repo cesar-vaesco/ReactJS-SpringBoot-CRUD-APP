@@ -29,13 +29,12 @@ public class EmpleadoController {
 	}
 	
 	//crear empleado rest api
-	/*http://localhost:8080/api/v1/empleados*/
 	/*{
     "nombre":"***",
     "apellido":"***",
     "email":"****@correo.com"
     }*/
-	@PostMapping("/crear-empleados")
+	@PostMapping("/empleados")
 	public Empleado crearEmpleado(@RequestBody Empleado empleado) {
 		return empleadoRepository.save(empleado);
 	} 
