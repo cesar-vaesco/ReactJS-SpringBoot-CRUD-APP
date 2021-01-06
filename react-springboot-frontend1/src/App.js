@@ -1,11 +1,10 @@
 import "./App.css";
+import ListaEmpleadosComponent from "./components/ListaEmpleadosComponent";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hola Mundo con bootstrap!</h1>{" "}
-      </header>{" "}
+    <div className="container">
+      <ListaEmpleadosComponent/>
     </div>
   );
 }
