@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vaescode.backend.model.Empleado;
 import com.vaescode.backend.repository.EmpleadoRepository;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/")
 public class EmpleadoController {
@@ -20,7 +19,7 @@ public class EmpleadoController {
 	private EmpleadoRepository empleadoRepository;
 	
 	//listar todos los empleados
-	
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping("/empleados")
 	public List<Empleado> listarEmpleados(){
 		return empleadoRepository.findAll();
