@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.vaescode.backend.model;
+
+/**
+ * @author thece
+ *
+ */
+public class Empleado {
+
+}
