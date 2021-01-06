@@ -35,7 +35,7 @@ public class EmpleadoController {
     "apellido":"***",
     "email":"****@correo.com"
     }*/
-	@PostMapping("/crear-empleados")
+	@PostMapping("/empleados")
 	public Empleado crearEmpleado(@RequestBody Empleado empleado) {
 		return empleadoRepository.save(empleado);
 	} 

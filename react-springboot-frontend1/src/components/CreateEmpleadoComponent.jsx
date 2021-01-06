@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EmpleadoService from "../services/EmpleadoService";
 
 class CreateEmpleadoComponent extends Component {
   constructor(prop) {
@@ -6,9 +7,9 @@ class CreateEmpleadoComponent extends Component {
 
     /**Inicializa los valores de los atributos del formulario vacios */
     this.state = {
-        nombre:'',
-        apellido:'',
-        email:''
+      nombre: '',
+      apellido: '',
+      email: '',
     };
     this.changeNombreHandler = this.changeNombreHandler.bind(this);
     this.changeApellidoHandler = this.changeApellidoHandler.bind(this);
@@ -17,24 +18,35 @@ class CreateEmpleadoComponent extends Component {
   }
 
   /** Método para salvar empleados*/
-  saveEmpleado =(e)=>{
-      e.preventDefault();
-      let empleado = {nombre: this.state.nombre, apellido: this.state.apellido, email: this.state.email};
-      console.log('empleado => ' + JSON.stringify(empleado));
-  } 
-  /**Métodos que permiten asignar valores a los atributos del formulario */
-  changeNombreHandler=(event) =>{
-    this.setState({nombre:event.target.value});
-  }
-  changeApellidoHandler=(event) =>{
-    this.setState({apellido:event.target.value});
-  }
-  changeEmailHandler=(event) =>{
-    this.setState({email:event.target.value});
+  saveEmpleado = (e) => {
+    e.preventDefault();
+    let empleado = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      email: this.state.email,
+    };
+    console.log("empleado => " + JSON.stringify(empleado));
+
+    EmpleadoService.createEmpleado(empleado).then(res =>{
+        /**URL usada del back para el intercambio de datos */
+        this.props.history.push('/empleados');
+    });
   }
 
-  cancel(){
-      this.props.history.push('/empleados');
+  /**Métodos que permiten asignar valores a los atributos del formulario */
+  changeNombreHandler = (event) => {
+    this.setState({ nombre: event.target.value });
+  };
+  changeApellidoHandler = (event) => {
+    this.setState({ apellido: event.target.value });
+  };
+  changeEmailHandler = (event) => {
+    this.setState({ email: event.target.value });
+  };
+
+  /**Método que permite redirigir a una nueva vista cuando se cancela el empleado */
+  cancel() {
+    this.props.history.push("/empleados");
   }
   render() {
     return (
@@ -74,8 +86,16 @@ class CreateEmpleadoComponent extends Component {
                     onChange={this.changeEmailHandler}
                   />
                 </div>
-                <button className="btn btn-success" onClick={this.saveEmpleado}>Guardar</button>
-                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancelar</button>
+                <button className="btn btn-success" onClick={this.saveEmpleado}>
+                  Guardar
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={this.cancel.bind(this)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Cancelar
+                </button>
               </form>
             </div>
           </div>
