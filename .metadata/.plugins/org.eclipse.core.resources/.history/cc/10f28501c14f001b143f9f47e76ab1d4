@@ -1,4 +1,4 @@
-spring.datasource.url=jdbc:mysql://localhost:3306/sistema_gestion_empleados?serverTimezone=America/Mexico_City&useSSL=false
+spring.datasource.url=jdbc:mysql://localhost:3306/systema_gestion_empleados?serverTimezone=America/Mexico_City&useSSL=false
 spring.datasource.username=root
 spring.datasource.password=cesar
 

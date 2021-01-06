@@ -1,0 +1,5 @@
+package com.vaescode.backend.controller;
+
+public class EmpleadoController {
+
+}
