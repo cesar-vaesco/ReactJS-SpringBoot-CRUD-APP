@@ -8,6 +8,7 @@ class ListaEmpleadosComponent extends Component {
       empleados: [],
     }
     this.addEmpleado = this.addEmpleado.bind(this); 
+    this.editEmpleado = this.editEmpleado.bind(this);
   }
 
   componentDidMount(){
@@ -18,6 +19,10 @@ class ListaEmpleadosComponent extends Component {
 
   addEmpleado(){
     this.props.history.push('/add-empleado');
+  }
+
+  editEmpleado(id){
+    this.props.history.push(`/update-empleado/${id}`);
   }
   render() {
     return (
@@ -30,6 +35,7 @@ class ListaEmpleadosComponent extends Component {
           <table className="table table-hover table-striped table-bordered">
             <thead className="thead-dark">
               <tr>
+                <th>Id de Usuario</th>
                 <th>Nombre del empleado</th>
                 <th>Apellido del empleado</th>
                 <th>Correo del empleado</th>
@@ -39,9 +45,13 @@ class ListaEmpleadosComponent extends Component {
             <tbody>
               {this.state.empleados.map((empleado) => (
                 <tr key ={empleado.id}>
+                  <td>{empleado.id}</td>
                   <td>{empleado.nombre}</td>
                   <td>{empleado.apellido}</td>
                   <td>{empleado.email}</td>
+                  <td>
+                    <button onClick={ ()=> this.editEmpleado(empleado.id)} className="btn btn-info">Editar</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
