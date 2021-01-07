@@ -11,7 +11,9 @@ class ListaEmpleadosComponent extends Component {
     this.editEmpleado = this.editEmpleado.bind(this);
     this.deleteEmpleado = this.deleteEmpleado.bind(this);
   }
+//Termina constructor
 
+/**Métodos funcionales */
   componentDidMount(){
     EmpleadoService.getEmpleados().then((res) => {
         this.setState({ empleados: res.data});
@@ -26,13 +28,17 @@ class ListaEmpleadosComponent extends Component {
     this.props.history.push(`/add-empleado/${id}`);
   }
 
+  listarEmpleado(id){
+    this.props.history.push(`/ver-empleado/${id}`);
+  }
+
   deleteEmpleado(id){
     //rest api
     EmpleadoService.deleteEmpleado(id).then( (res) =>{
       this.setState({ empleados: this.state.empleados.filter(empleado => empleado.id !== id)});
-     
     });
   } 
+
   render() {
     return (
       <div>
@@ -61,6 +67,7 @@ class ListaEmpleadosComponent extends Component {
                   <td>
                     <button onClick={ ()=> this.editEmpleado(empleado.id)} className="btn btn-info">Editar</button>
                     <button style={{marginLeft:"10px"}} onClick={ ()=> this.deleteEmpleado(empleado.id)} className="btn btn-danger">Eliminar</button>
+                    <button style={{marginLeft:"10px"}} onClick={ ()=> this.listarEmpleado(empleado.id)} className="btn btn-primary">Información</button>
                   </td>
                 </tr>
               ))}
