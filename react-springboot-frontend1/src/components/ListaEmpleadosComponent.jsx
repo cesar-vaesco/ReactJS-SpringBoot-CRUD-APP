@@ -18,11 +18,11 @@ class ListaEmpleadosComponent extends Component {
   }
 
   addEmpleado(){
-    this.props.history.push('/add-empleado');
+    this.props.history.push('/add-empleado/_add');
   }
 
   editEmpleado(id){
-    this.props.history.push(`/update-empleado/${id}`);
+    this.props.history.push(`/add-empleado/${id}`);
   }
   render() {
     return (
