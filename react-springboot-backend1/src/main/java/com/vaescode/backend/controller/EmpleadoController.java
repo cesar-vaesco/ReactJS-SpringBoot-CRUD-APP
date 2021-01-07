@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,12 +45,26 @@ public class EmpleadoController {
 	}
 
 	// Listar empleado por id rest api
-	/**http://localhost:8080/api/v1/empleados/10*/
+	/**http://localhost:8080/api/v1/empleados/{id}*/
 	@GetMapping("/empleados/{id}")
 	public  ResponseEntity<Empleado> listarEmpleadoById(@PathVariable Long id) {
 		Empleado empleado = empleadoRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con el id: " + id));
 		return ResponseEntity.ok(empleado);
+	}
+	
+	//Editar registro empleado rest api
+	@PutMapping("/empleados/{id}")
+	public ResponseEntity<Empleado> editarEmpleado(@PathVariable Long id, @RequestBody Empleado empleadoEditar){
+		Empleado empleado = empleadoRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Empleado no existe con el id: " + id));
+		
+		empleado.setNombre(empleadoEditar.getNombre());
+		empleado.setApellido(empleadoEditar.getApellido());
+		empleado.setEmail(empleadoEditar.getEmail());
+		
+		Empleado editarEmpleado = empleadoRepository.save(empleado);
+		return ResponseEntity.ok(editarEmpleado);
 	}
 
 }
