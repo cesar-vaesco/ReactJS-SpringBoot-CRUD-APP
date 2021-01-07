@@ -16,8 +16,12 @@ class EmpleadoService {
         return axios.post(EMPLEADO_API_BASE_URL, empleado);
     }
 
-    getEmpleadoById(empleadoId){
-        return axios.get(EMPLEADO_API_BASE_URL +'/'+ empleadoId);
+    getEmpleadoById(empleadoId) {
+        return axios.get(EMPLEADO_API_BASE_URL + '/' + empleadoId);
+    }
+
+    updateEmpleado(empleado, empleadoId) {
+        return axios.put(EMPLEADO_API_BASE_URL + '/' + empleadoId, empleado);
     }
 }
 

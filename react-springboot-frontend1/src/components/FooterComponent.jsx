@@ -5,8 +5,8 @@ class FooterComponent extends Component {
     render() {
         return (
             <div>
-                <footer className="footer">
-                    <span className="text-muted">Derechos Reservados 2021 @VAESCODE</span>
+                <footer className="footer navbar-fixed-bottom">
+                    <span className="text-muted">Derechos Reservados 2021 @VaesCode</span>
                 </footer>
             </div>
         );

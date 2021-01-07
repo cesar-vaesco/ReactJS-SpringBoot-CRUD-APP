@@ -38,6 +38,9 @@ class UpdateEmpleadoComponent extends Component {
       email: this.state.email,
     };
     console.log("empleado => " + JSON.stringify(empleado));
+    EmpleadoService.updateEmpleado(empleado, this.state.id).then(res =>{
+        this.props.history.push('/empleados');
+    });
   };
 
   /**Métodos que permiten asignar valores a los atributos del formulario */
