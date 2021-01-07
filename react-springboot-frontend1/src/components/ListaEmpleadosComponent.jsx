@@ -5,10 +5,11 @@ class ListaEmpleadosComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      empleados: [],
+      empleados: []
     }
     this.addEmpleado = this.addEmpleado.bind(this); 
     this.editEmpleado = this.editEmpleado.bind(this);
+    this.deleteEmpleado = this.deleteEmpleado.bind(this);
   }
 
   componentDidMount(){
@@ -24,6 +25,14 @@ class ListaEmpleadosComponent extends Component {
   editEmpleado(id){
     this.props.history.push(`/add-empleado/${id}`);
   }
+
+  deleteEmpleado(id){
+    //rest api
+    EmpleadoService.deleteEmpleado(id).then( (res) =>{
+      this.setState({ empleados: this.state.empleados.filter(empleado => empleado.id !== id)});
+     
+    });
+  } 
   render() {
     return (
       <div>
@@ -51,6 +60,7 @@ class ListaEmpleadosComponent extends Component {
                   <td>{empleado.email}</td>
                   <td>
                     <button onClick={ ()=> this.editEmpleado(empleado.id)} className="btn btn-info">Editar</button>
+                    <button style={{marginLeft:"10px"}} onClick={ ()=> this.deleteEmpleado(empleado.id)} className="btn btn-danger">Eliminar</button>
                   </td>
                 </tr>
               ))}

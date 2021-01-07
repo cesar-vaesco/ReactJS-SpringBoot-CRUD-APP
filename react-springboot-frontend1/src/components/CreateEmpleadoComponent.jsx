@@ -9,9 +9,9 @@ class CreateEmpleadoComponent extends Component {
     this.state = {
       //paso 2
       id: this.props.match.params.id,
-      nombre: "",
-      apellido: "",
-      email: "",
+      nombre: '',
+      apellido: '',
+      email: '',
     };
     this.changeNombreHandler = this.changeNombreHandler.bind(this);
     this.changeApellidoHandler = this.changeApellidoHandler.bind(this);
